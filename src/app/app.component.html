@@ -1,0 +1,16 @@
+<div class="container">
+  <app-parking-lot
+    (addedServer)="onServerAdded"
+    (addedBlueprint)="onBlueprintAdded"
+  >
+  </app-parking-lot>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-servers
+        *ngFor="let serverElement of serverElements"
+        [srvElement]="serverElement"
+      ></app-servers>
+    </div>
+  </div>
+</div>
