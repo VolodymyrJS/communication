@@ -1,6 +1,4 @@
-import { ServersComponent } from './../servers/servers.component';
-import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-parking-lot',
@@ -12,22 +10,25 @@ export class ParkingLotComponent implements OnInit {
   newServerName = '';
   newServerContent = '';
   // tslint:disable-next-line: no-output-on-prefix
-  @Output() onBlueprintAdded = new EventEmitter<{serverName: string, serverContent: string}>();
-  @Output() addedBlueprint = new EventEmitter<{servername: string, serverContent: string}>();
+  @Output() addedServer = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output() addedBlueprint = new EventEmitter<{serverName: string, serverContent: string}>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onAddServer() {
-    this.onAddBlueprint.emit({
+  onServerAdded() {
+    this.addedServer.emit({
       serverName: this.newServerName,
       serverContent: this.newServerContent
     });
   }
 
-  onAddBlueprint() {
-
+  onBlueprintAdded() {
+    this.addedBlueprint.emit({
+      serverName: this.newServerName,
+      serverContent: this.newServerContent
+    });
   }
 }
